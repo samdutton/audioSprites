@@ -25,10 +25,25 @@ if (typeof audio.addTextTrack === "function") {
         }        
       };
     }
-
-    track.addCue(new TextTrackCue("purr", 0.000, 1.875, ""));
-    track.addCue(new TextTrackCue("kitten mew", 3.000, 4.000, ""));
-
+    
+    var sounds = [
+      {id: "purr", startTime: 0.200, endTime: 1.800},
+      {id: "meow", startTime: 2.300, endTime: 3.300},
+      {id: "bark", startTime: 3.900, endTime: 4.300},
+      {id: "baa", startTime: 5.000, endTime: 5.800},
+      {id: "moo", startTime: 6.500 , endTime: 8.200},
+      {id: "bleat", startTime: 8.500, endTime: 9.400},
+      {id: "woof", startTime: 9.900, endTime: 10.400},
+      {id: "cluck", startTime: 11.100, endTime: 13.400},
+      {id: "mew", startTime: 13.800, endTime: 15.600}
+    ]; 
+    
+    for (var i = 0; i !== sounds.length; ++i) {
+      var sound = sounds[i];
+      track.addCue(new TextTrackCue(sound.id, sound.startTime, sound.endTime, "")); 
+      $("#soundButtons").append("<button class='playSound' id=" + sound.id + ">" + sound.id + "</button>");
+    }
+   
     var endTime;
     audio.addEventListener("timeupdate", function (event) {
       if (event.target.currentTime > endTime)
