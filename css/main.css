@@ -60,11 +60,13 @@ font-weight: bold;
 }
 
 .hidden {
+margin: 0 !important;
+max-height: 0;
 opacity: 0;
--webkit-transition: max-height 0.5s, opacity 1.5s ease-in-out;
+padding: 0 !important;
 }
 
 .visible {
+max-height: inherit;
 opacity: 1;
-overflow:visible;
 }
